@@ -10,6 +10,8 @@ Group:          Sound
 License:        LGPLv2+
 URL:            http://www.acoustid.org/chromaprint/
 Source:         https://github.com/downloads/lalinsky/chromaprint/%{name}-%{version}.tar.gz
+Patch0: 0001-Compatibility-with-FFmpeg-0.11-fixes-22.patch
+Patch1: 0002-Typo.patch
 
 BuildRequires:  cmake
 BuildRequires:  fftw-devel >= 3
@@ -48,6 +50,7 @@ applications which will use %{name}.
 
 %prep
 %setup -q
+%apply_patches
 
 
 %build
