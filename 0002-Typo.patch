@@ -1,0 +1,25 @@
+From 8187d88ad6c2d28344c9960854c251f9af5cd48a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Lalinsk=C3=BD?= <lalinsky@gmail.com>
+Date: Mon, 4 Jun 2012 09:59:53 +0200
+Subject: [PATCH 2/2] Typo
+
+---
+ examples/fpcalc.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/examples/fpcalc.c b/examples/fpcalc.c
+index e419d63..dad4068 100644
+--- a/examples/fpcalc.c
++++ b/examples/fpcalc.c
+@@ -36,7 +36,7 @@ int decode_audio_file(ChromaprintContext *chromaprint_ctx, int16_t *buffer1, int
+ #if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(53, 2, 0)
+ 	if (av_open_input_file(&format_ctx, file_name, NULL, 0, NULL) != 0) {
+ #else
+-	if (avformat_open_input_file(&format_ctx, file_name, NULL, NULL) != 0) {
++	if (avformat_open_input(&format_ctx, file_name, NULL, NULL) != 0) {
+ #endif
+ 		fprintf(stderr, "ERROR: couldn't open the file\n");
+ 		goto done;
+-- 
+1.7.1
+
