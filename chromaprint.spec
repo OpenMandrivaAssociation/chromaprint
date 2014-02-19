@@ -1,15 +1,15 @@
-%define	major		0
-%define	libname		%mklibname %{name} %{major}
-%define	develname	%mklibname -d %{name}
+%define major 0
+%define libname %mklibname %{name} %{major}
+%define develname %mklibname -d %{name}
 
 Name:		chromaprint
-Version:		0.7
-Release:		6
-Summary:		Library and tool implementing the AcoustID fingerprinting
+Version:	1.0
+Release:	1
+Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
-License:		LGPLv2+
+License:	LGPLv2+
 URL:		http://www.acoustid.org/chromaprint/
-Source:		https://github.com/downloads/lalinsky/chromaprint/%{name}-%{version}.tar.gz
+Source0:	https://github.com/downloads/lalinsky/chromaprint/%{name}-%{version}.tar.gz
 BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
 # This is needed for examples
