@@ -4,7 +4,7 @@
 
 Name:		chromaprint
 Version:	1.0
-Release:	4
+Release:	5
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
