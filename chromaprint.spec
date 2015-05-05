@@ -4,7 +4,7 @@
 
 Name:		chromaprint
 Version:	1.0
-Release:	1.1
+Release:	1.2
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
@@ -13,7 +13,7 @@ Source0:	https://github.com/downloads/lalinsky/chromaprint/%{name}-%{version}.ta
 BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
 # This is needed for examples
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 2.5.4
 BuildRequires:	boost-devel
 
 %description
@@ -37,8 +37,8 @@ found in the main header file.
 %package -n %{develname}
 Summary:        Headers for developing programs that will use %{name} 
 Group:          Development/C++
-Requires:       %{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Requires:       %{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{develname}
 This package contains the headers that programmers will need to develop
