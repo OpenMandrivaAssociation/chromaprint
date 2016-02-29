@@ -1,20 +1,21 @@
-%define major 0
+%define major 1
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname -d %{name}
 
 Name:		chromaprint
-Version:	1.0
-Release:	7
+Version:	1.3.1
+Release:	1
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
-URL:		http://www.acoustid.org/chromaprint/
-Source0:	https://github.com/downloads/lalinsky/chromaprint/%{name}-%{version}.tar.gz
+URL:		http://acoustid.org/chromaprint/
+Source0:	https://bitbucket.org/acoustid/chromaprint/downloads/%{name}-%{version}.tar.gz
 BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
 # This is needed for examples
 BuildRequires:	ffmpeg-devel
 BuildRequires:	boost-devel
+BuildRequires:	ninja
 
 %description
 Chromaprint library is the core component of the AcoustID project. It's a
@@ -51,25 +52,21 @@ applications which will use %{name}.
 
 
 %build
-%cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTS=off
-%make
+%cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTS=off -G Ninja
+ninja
 
 
 %install
-%makeinstall_std -C build
+DESTDIR="%{buildroot}" ninja install -C build
 
 
 %files
-%doc README.txt
 %{_bindir}/fpcalc
 
 %files -n %{libname}
-%doc CHANGES.txt COPYING.txt NEWS.txt README.txt
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
 %{_includedir}/chromaprint.h
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
-
-
