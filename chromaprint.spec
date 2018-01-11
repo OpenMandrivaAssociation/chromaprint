@@ -3,12 +3,12 @@
 %define develname %mklibname -d %{name}
 
 Name:		chromaprint
-Version:	1.3.1
-Release:	2
+Version:	1.4.2
+Release:	1
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
-URL:		http://acoustid.org/chromaprint/
+URL:		https://acoustid.org/chromaprint
 Source0:	https://bitbucket.org/acoustid/chromaprint/downloads/%{name}-%{version}.tar.gz
 BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
@@ -52,12 +52,12 @@ applications which will use %{name}.
 
 
 %build
-%cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTS=off -G Ninja
-ninja
+%cmake -DBUILD_EXAMPLES=ON -DBUILD_TOOLS=ON -DBUILD_TESTS=off -G Ninja
+%ninja
 
 
 %install
-DESTDIR="%{buildroot}" ninja install -C build
+%ninja_install -C build
 
 
 %files
