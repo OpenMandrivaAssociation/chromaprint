@@ -3,13 +3,13 @@
 %define develname %mklibname -d %{name}
 
 Name:		chromaprint
-Version:	1.4.2
+Version:	1.4.3
 Release:	1
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
 URL:		https://acoustid.org/chromaprint
-Source0:	https://bitbucket.org/acoustid/chromaprint/downloads/%{name}-%{version}.tar.gz
+Source0:	https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
 # This is needed for examples
@@ -47,7 +47,7 @@ applications which will use %{name}.
 
 
 %prep
-%setup -q
+%setup -qn %{name}-v%{version}
 %apply_patches
 
 

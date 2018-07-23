@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   chromaprint-1.4.2.tar.gz: 3d90530e643a351f49460f08fcbc163179e9c036
+sources:
+  chromaprint-1.4.3.tar.gz: c3f880f6ed752c0d0802c55d28a1a6df78b4d7d4
