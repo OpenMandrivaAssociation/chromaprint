@@ -48,7 +48,7 @@ applications which will use %{name}.
 
 %prep
 %setup -qn %{name}-v%{version}
-%apply_patches
+%autopatch -p1
 
 
 %build
