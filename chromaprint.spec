@@ -3,8 +3,8 @@
 %define develname %mklibname -d %{name}
 
 Name:		chromaprint
-Version:	1.4.3
-Release:	2
+Version:	1.5.0
+Release:	1
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
