@@ -4,7 +4,7 @@
 
 Name:		chromaprint
 Version:	1.5.0
-Release:	1
+Release:	2
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Group:		Sound
 License:	LGPLv2+
@@ -47,18 +47,14 @@ applications which will use %{name}.
 
 
 %prep
-%setup -qn %{name}-v%{version}
-%autopatch -p1
-
+%autosetup -n %{name}-v%{version} -p1
 
 %build
 %cmake -DBUILD_EXAMPLES=ON -DBUILD_TOOLS=ON -DBUILD_TESTS=off -G Ninja
-%ninja
-
+%ninja_build
 
 %install
 %ninja_install -C build
-
 
 %files
 %{_bindir}/fpcalc
