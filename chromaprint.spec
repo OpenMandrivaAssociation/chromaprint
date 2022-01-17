@@ -58,7 +58,7 @@ applications which will use %{name}.
 %ninja_install -C build
 
 %check
-build/tests/all_tests
+LD_LIBRARY_PATH=`pwd`/build/src build/tests/all_tests
 
 %files
 %{_bindir}/fpcalc
