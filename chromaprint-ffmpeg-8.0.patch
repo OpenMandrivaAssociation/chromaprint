@@ -1,0 +1,12 @@
+diff -up chromaprint-1.5.1/src/audio/ffmpeg_audio_reader.h.omv~ chromaprint-1.5.1/src/audio/ffmpeg_audio_reader.h
+--- chromaprint-1.5.1/src/audio/ffmpeg_audio_reader.h.omv~	2025-08-26 23:51:52.033852226 +0200
++++ chromaprint-1.5.1/src/audio/ffmpeg_audio_reader.h	2025-08-26 23:55:03.031588144 +0200
+@@ -225,7 +225,7 @@ inline void FFmpegAudioReader::Close() {
+ 	m_stream_index = -1;
+ 
+ 	if (m_codec_ctx) {
+-		avcodec_close(m_codec_ctx);
++		ff_codec_close(m_codec_ctx);
+ 		m_codec_ctx = nullptr;
+ 	}
+ 

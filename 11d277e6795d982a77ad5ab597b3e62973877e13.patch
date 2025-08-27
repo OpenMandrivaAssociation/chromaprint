@@ -1,0 +1,36 @@
+From 11d277e6795d982a77ad5ab597b3e62973877e13 Mon Sep 17 00:00:00 2001
+From: wo80 <christian.woltering@tu-dortmund.de>
+Date: Tue, 24 Jun 2025 16:59:41 +0200
+Subject: [PATCH] Fix FFmpegAudioReaderTest for FFmpeg v7
+
+Debian bug report:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1072404
+
+Debian patch:
+https://salsa.debian.org/multimedia-team/chromaprint/-/commit/9fe16b1b76920bbd47b5820011cdcd079786397c
+
+Fixes #142
+---
+ src/audio/ffmpeg_audio_reader.h | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/audio/ffmpeg_audio_reader.h b/src/audio/ffmpeg_audio_reader.h
+index 35b2934..48c23f9 100644
+--- a/src/audio/ffmpeg_audio_reader.h
++++ b/src/audio/ffmpeg_audio_reader.h
+@@ -118,8 +118,13 @@ inline bool FFmpegAudioReader::SetInputSampleRate(int sample_rate) {
+ 
+ inline bool FFmpegAudioReader::SetInputChannels(int channels) {
+ 	char buf[64];
+-	sprintf(buf, "%d", channels);
+-	return av_dict_set(&m_input_opts, "channels", buf, 0) >= 0;
++    if (channels == 1)
++        sprintf(buf, "%s", "mono");
++    else if (channels == 2)
++        sprintf(buf, "%s", "stereo");
++    else
++        sprintf(buf, "%d channels", channels);
++    return av_dict_set(&m_input_opts, "ch_layout", buf, 0) >= 0;
+ }
+ 
+ inline bool FFmpegAudioReader::Open(const std::string &file_name) {

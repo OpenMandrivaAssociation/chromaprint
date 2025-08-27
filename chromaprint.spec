@@ -12,14 +12,18 @@ URL:		https://acoustid.org/chromaprint
 Source0:	https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		chromaprint-1.5.1-ffmpeg-5.0.patch
 #Patch1:		chromaprint-1.5.1-ffmpeg-7.0.patch
-Patch0:		https://github.com/acoustid/chromaprint/commit/8ccad6937177b1b92e40ab8f4447ea27bac009a7.patch
-Patch1:		https://github.com/acoustid/chromaprint/commit/82781d02cd3063d071a501218297a90bde9a314f.patch
 BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
 # This is needed for examples
 BuildRequires:	ffmpeg-devel
 BuildRequires:	boost-devel
 BuildRequires:	ninja
+
+%patchlist
+https://github.com/acoustid/chromaprint/commit/8ccad6937177b1b92e40ab8f4447ea27bac009a7.patch
+https://github.com/acoustid/chromaprint/commit/82781d02cd3063d071a501218297a90bde9a314f.patch
+https://github.com/acoustid/chromaprint/commit/11d277e6795d982a77ad5ab597b3e62973877e13.patch
+chromaprint-ffmpeg-8.0.patch
 
 %description
 Chromaprint library is the core component of the AcoustID project. It's a
