@@ -6,7 +6,7 @@ diff -up chromaprint-1.5.1/src/audio/ffmpeg_audio_reader.h.omv~ chromaprint-1.5.
  
  	if (m_codec_ctx) {
 -		avcodec_close(m_codec_ctx);
-+		ff_codec_close(m_codec_ctx);
++		avcodec_free_context(&m_codec_ctx);
  		m_codec_ctx = nullptr;
  	}
  
