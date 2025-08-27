@@ -1,0 +1,25 @@
+From c0870e38eea0e4f108d82e1dd33d927d9c6c21cc Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Wed, 27 Aug 2025 14:11:28 -0400
+Subject: [PATCH] Fix build with FFmpeg 8.0
+
+---
+ src/audio/ffmpeg_audio_reader.h | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/audio/ffmpeg_audio_reader.h b/src/audio/ffmpeg_audio_reader.h
+index 48c23f9..3127d07 100644
+--- a/src/audio/ffmpeg_audio_reader.h
++++ b/src/audio/ffmpeg_audio_reader.h
+@@ -224,10 +224,7 @@ inline void FFmpegAudioReader::Close() {
+ 
+ 	m_stream_index = -1;
+ 
+-	if (m_codec_ctx) {
+-		avcodec_close(m_codec_ctx);
+-		m_codec_ctx = nullptr;
+-	}
++	avcodec_free_context(&m_codec_ctx);
+ 
+ 	if (m_format_ctx) {
+ 		avformat_close_input(&m_format_ctx);
