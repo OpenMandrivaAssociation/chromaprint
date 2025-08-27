@@ -24,7 +24,7 @@ BuildRequires:	ninja
 https://github.com/acoustid/chromaprint/commit/8ccad6937177b1b92e40ab8f4447ea27bac009a7.patch
 https://github.com/acoustid/chromaprint/commit/82781d02cd3063d071a501218297a90bde9a314f.patch
 https://github.com/acoustid/chromaprint/commit/11d277e6795d982a77ad5ab597b3e62973877e13.patch
-chromaprint-ffmpeg-8.0.patch
+https://patch-diff.githubusercontent.com/raw/acoustid/chromaprint/pull/153.patch
 
 %description
 Chromaprint library is the core component of the AcoustID project. It's a
