@@ -1,5 +1,6 @@
 %define major 1
-%define libname %mklibname %{name} %{major}
+%define oldlibname %mklibname %{name} 1
+%define libname %mklibname %{name}
 %define develname %mklibname -d %{name}
 
 Name:		chromaprint
@@ -35,6 +36,8 @@ found in the main header file.
 %package -n %{libname}
 Summary:		Library implementing the AcoustID fingerprinting
 Group:		System/Libraries
+# Renamed after 6.0 2025-08-27
+%rename %{oldlibname}
 
 %description -n %{libname}
 Chromaprint library is the core component of the AcoustID project. It's a 
