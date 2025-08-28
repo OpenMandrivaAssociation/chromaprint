@@ -3,6 +3,11 @@
 %define libname %mklibname %{name}
 %define develname %mklibname -d %{name}
 
+# FIXME As of LLVM 21.1, the test suite takes up
+# all RAM while linking at -O3, so make
+# sure we don't use -O3
+%global optflags %{optflags} -O2
+
 Name:		chromaprint
 Version:	1.5.1
 Release:	6
@@ -13,12 +18,14 @@ URL:		https://acoustid.org/chromaprint
 Source0:	https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		chromaprint-1.5.1-ffmpeg-5.0.patch
 #Patch1:		chromaprint-1.5.1-ffmpeg-7.0.patch
-BuildRequires:	cmake >= 2.6
 BuildRequires:	fftw-devel >= 3
 # This is needed for examples
 BuildRequires:	ffmpeg-devel
 BuildRequires:	boost-devel
-BuildRequires:	ninja
+BuildSystem:	cmake
+BuildOption:	-DBUILD_EXAMPLES:BOOL=ON
+BuildOption:	-DBUILD_TOOLS:BOOL=ON
+BuildOption:	-DBUILD_TESTS:BOOL=ON
 
 %patchlist
 https://github.com/acoustid/chromaprint/commit/8ccad6937177b1b92e40ab8f4447ea27bac009a7.patch
@@ -56,16 +63,6 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package contains the headers that programmers will need to develop
 applications which will use %{name}. 
 
-
-%prep
-%autosetup -n %{name}-%{version} -p1
-%cmake -DBUILD_EXAMPLES=ON -DBUILD_TOOLS=ON -DBUILD_TESTS=ON -G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
 
 %if ! %{cross_compiling}
 %check
