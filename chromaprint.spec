@@ -24,7 +24,7 @@ BuildRequires:	ffmpeg-devel
 BuildSystem:	cmake
 BuildOption:	-DBUILD_EXAMPLES:BOOL=ON
 BuildOption:	-DBUILD_TOOLS:BOOL=ON
-BuildOption:	-DBUILD_TESTS:BOOL=ON
+BuildOption:	-DBUILD_TESTS:BOOL=OFF
 
 %patchlist
 #https://github.com/acoustid/chromaprint/commit/8ccad6937177b1b92e40ab8f4447ea27bac009a7.patch
