@@ -10,16 +10,16 @@
 
 Summary:	Library and tool implementing the AcoustID fingerprinting
 Name:	chromaprint
-Version:	1.6.1
-Release:	4
-License:	LGPLv2+
+Version:	1.6.2
+Release:	1
+License:	LGPL-2.0-or-later
 Group:	Sound
 Url:		https://acoustid.org/chromaprint
 Source0:	https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	boost-devel
-BuildRequires:	pkgconfig(fftw3) >= 3
 # This is needed for examples
 BuildRequires:	ffmpeg-devel
+BuildRequires:	pkgconfig(fftw3) >= 3
 
 BuildSystem:	cmake
 BuildOption:	-DBUILD_EXAMPLES:BOOL=ON
